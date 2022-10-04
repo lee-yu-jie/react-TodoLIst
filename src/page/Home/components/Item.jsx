@@ -10,7 +10,7 @@ const Item = ({ id, noteData, dateData, timeData, deleteData }) => {
   return (
     <div className="item">
       <div>
-        <p>{noteData}</p>
+        <p className="content">{noteData}</p>
         <p>{`${dateData} ${timeData}`}</p>
       </div>
       <button className="remove" onClick={deleteItem}>
