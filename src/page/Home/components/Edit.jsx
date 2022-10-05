@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { v4 } from "uuid";
+import { API_DATA } from '../../../global/constants';
 
 const Edit = ({ add }) => {
   const [note, setNote] = useState("");
@@ -16,18 +16,21 @@ const Edit = ({ add }) => {
   function timeChange(e) {
     setTime(e.target.value);
   }
+  
   function addItem() {
-    add(function (prevDate) {
-      return [
-        {
-          id: v4(),
-          note,
-          date,
-          time,
-        },
-        ...prevDate,
-      ];
-    });
+    fetch(API_DATA, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({note, date, time})
+    }).then(() => {
+      fetch(API_DATA)
+      .then((res)=> res.json())
+      .then((data) => {
+        add(data.reverse());
+      })
+    })
     setDate('');
     setNote('');
     setTime('');

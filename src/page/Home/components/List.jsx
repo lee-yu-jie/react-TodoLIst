@@ -4,11 +4,11 @@ import Item from "./Item";
 const List = ({ ListData, deleteData }) => {
   return (
     <div className="list">
-      {ListData.map((item) => {
+      {ListData.map((item, index) => {
         const { id, note, date, time } = item;
         return (
           <Item
-            key={id}
+            key={index}
             id={id}
             noteData={note}
             dateData={date}

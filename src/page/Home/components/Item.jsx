@@ -1,10 +1,15 @@
 import React from "react";
+import { API_DATA } from '../../../global/constants';
 
-const Item = ({ id, noteData, dateData, timeData, deleteData }) => {
+const Item = ({ id, noteData, dateData, timeData, deleteData}) => {
   function deleteItem() {
     deleteData(function (prev) {
       return prev.filter((item) => item.id !== id);
     });
+    const deleteAPI = `${API_DATA}/${id}`  
+    fetch(deleteAPI, {
+      method: 'delete',
+    }).catch(err => console.log(err));
   }
 
   return (

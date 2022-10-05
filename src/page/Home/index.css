@@ -1,7 +1,7 @@
 #root {
   min-height: 100vh;
   background-color: rgb(145, 82, 209);
-  padding-top: 5em;
+  padding: 5em 0;
 }
 .app {
   width: 50%;
